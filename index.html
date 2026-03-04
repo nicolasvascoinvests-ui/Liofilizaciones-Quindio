@@ -487,6 +487,13 @@
     text-decoration: none; transition: background .2s;
   }
   .btn-wa-order:hover { background: #128C7E; }
+  .btn-wa-order:disabled { background: #ccc; cursor: not-allowed; opacity: .7; }
+  .btn-wa-order:disabled:hover { background: #ccc; }
+
+  .cart-minimum-msg {
+    text-align: center; font-size: .82rem; color: var(--orange);
+    font-weight: 700; padding: 8px 0 4px; line-height: 1.3;
+  }
 
   /* ─── FLOATING CART (mobile) ─────────────────────── */
   .float-cart {
@@ -676,7 +683,7 @@
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-tag">🇨🇴 Desde el Quindío para Colombia</div>
-      <h1>Fruta Liofilizada<br><span>100% Puro Sin Cuentos.</span></h1>
+      <h1>Fruta Liofilizada<br><span>100% Fruta. Sin Cuentos.</span></h1>
       <p>Sin azúcar. Sin conservantes. Snacks naturales, repletos de nutrientes y sabor auténtico. Directamente desde el Quindío.</p>
       <div class="hero-ctas">
         <a href="#productos" class="btn-primary">Ver Productos</a>
@@ -1147,7 +1154,8 @@
       <span>Subtotal</span>
       <strong id="cartTotal">$0 COP</strong>
     </div>
-    <button class="btn-wa-order" onclick="orderWhatsApp()">
+    <div class="cart-minimum-msg" id="cartMinMsg" style="display:none"></div>
+    <button class="btn-wa-order" id="btnOrder" onclick="orderWhatsApp()">
       <span style="font-size:1.3rem">💬</span> Pedir por WhatsApp
     </button>
   </div>
@@ -1321,6 +1329,21 @@
       emptyEl.style.display = 'none';
       footer.style.display = '';
       totalEl.textContent = '$' + total.toLocaleString('es-CO') + ' COP';
+
+      // Minimum order check
+      const minMsg = document.getElementById('cartMinMsg');
+      const btnOrder = document.getElementById('btnOrder');
+      const meetsMin = count >= 12 || total >= 50000;
+      btnOrder.disabled = !meetsMin;
+      if (!meetsMin) {
+        const needQty = 12 - count;
+        const needCOP = 50000 - total;
+        minMsg.style.display = '';
+        minMsg.textContent = `Pedido mínimo: 12 productos (faltan ${needQty}) o $50.000 COP (faltan $${needCOP.toLocaleString('es-CO')})`;
+      } else {
+        minMsg.style.display = 'none';
+      }
+
       // Rebuild items
       const existing = itemsEl.querySelectorAll('.cart-item');
       existing.forEach(el => el.remove());
@@ -1483,7 +1506,9 @@
   // ─── WHATSAPP ORDER ────────────────────────────────
   function orderWhatsApp() {
     if (cart.length === 0) return;
+    const count = cart.reduce((s, i) => s + i.qty, 0);
     const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    if (count < 12 && total < 50000) return;
     let lines = cart.map(i => `  • ${i.qty}x ${i.name} ($${i.price.toLocaleString('es-CO')} COP c/u)`).join('\n');
     const msg = `¡Hola LioFruts! 🍓 Me gustaría hacer el siguiente pedido:\n\n${lines}\n\n*Total: $${total.toLocaleString('es-CO')} COP*\n\n¡Gracias!`;
     window.open('https://wa.me/573233658793?text=' + encodeURIComponent(msg), '_blank');
