@@ -11,12 +11,12 @@
 <meta property="og:title" content="LioFruts | Fruta Liofilizada 100% Colombiana">
 <meta property="og:description" content="Snacks de fruta liofilizada 100% colombiana sin conservantes. Fresa, piña, mango, banano, uchuva — de Liofilizaciones Quindío.">
 <meta property="og:url" content="https://liofruts.co/">
-<meta property="og:image" content="https://liofruts.co/Brand_assets/Liofruts.jpg">
+<meta property="og:image" content="https://liofruts.co/Brand_assets/Liofruts_Logo.jpg">
 <meta property="og:locale" content="es_CO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LioFruts | Fruta Liofilizada 100% Colombiana">
 <meta name="twitter:description" content="Snacks de fruta liofilizada 100% colombiana sin conservantes. De Liofilizaciones Quindío para Colombia.">
-<meta name="twitter:image" content="https://liofruts.co/Brand_assets/Liofruts.jpg">
+<meta name="twitter:image" content="https://liofruts.co/Brand_assets/Liofruts_Logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -259,10 +259,37 @@
   .process-step h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--dark); }
   .process-step p { font-size: .88rem; color: #444; line-height: 1.6; font-weight: 600; }
 
+  /* ─── PROPIEDADES Y USOS ─────────────────────────── */
+  #propiedades { background: var(--white); }
+  .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .prop-card {
+    background: var(--yellow-light); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .3s;
+  }
+  .prop-card:hover { transform: translateY(-4px); }
+  .prop-card-header {
+    padding: 20px 22px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+    font-weight: 800; font-size: 1.05rem; color: var(--dark); user-select: none;
+  }
+  .prop-card-header span.prop-emoji { font-size: 1.4rem; margin-right: 10px; }
+  .prop-card-header .prop-arrow { transition: transform .3s; font-size: .8rem; color: var(--gray); }
+  .prop-card.open .prop-arrow { transform: rotate(180deg); }
+  .prop-card-body {
+    max-height: 0; overflow: hidden; transition: max-height .4s ease;
+    padding: 0 22px;
+  }
+  .prop-card.open .prop-card-body { max-height: 600px; padding: 0 22px 20px; }
+  .prop-card-body h4 { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--green); margin: 0 0 8px; }
+  .prop-card-body ul { list-style: none; padding: 0; margin: 0 0 14px; }
+  .prop-card-body ul li { font-size: .88rem; color: var(--dark); font-weight: 600; line-height: 1.7; padding-left: 16px; position: relative; }
+  .prop-card-body ul li::before { content: '•'; color: var(--orange); position: absolute; left: 0; font-weight: 900; }
+  @media (max-width: 900px) { .props-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .props-grid { grid-template-columns: 1fr; } }
+
   /* ─── RECETAS ─────────────────────────────────────── */
   #recetas { background: var(--green-light); }
   #recetas .section-header h2 { color: var(--green); }
-  .recipes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
+  .recipes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
   .recipe-card {
     background: var(--white); border-radius: var(--radius);
     padding: 36px 32px; box-shadow: var(--shadow);
@@ -559,7 +586,7 @@
       "name": "Liofilizaciones Quindío",
       "alternateName": "LioFruts",
       "url": "https://liofruts.co",
-      "logo": "https://liofruts.co/Brand_assets/Liofruts.jpg",
+      "logo": "https://liofruts.co/Brand_assets/Liofruts_Logo.jpg",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+57-323-365-8793",
@@ -641,7 +668,7 @@
 <!-- ═══ NAVBAR ═══════════════════════════════════════ -->
 <nav id="navbar">
   <a href="#" class="nav-brand">
-    <img src="Brand_assets/Liofruts.jpg" alt="Liofilizaciones Quindío Logo">
+    <img src="Brand_assets/Liofruts_Logo.jpg" alt="Liofilizaciones Quindío Logo">
     <div class="nav-brand-text">
       <span class="nav-brand-company">Liofilizaciones Quindío</span>
       <span class="nav-brand-product">LioFruts</span>
@@ -650,6 +677,7 @@
   <ul class="nav-links">
     <li><a href="#productos">Productos</a></li>
     <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#propiedades">Propiedades</a></li>
     <li><a href="#recetas">Recetas</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -669,6 +697,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#productos" onclick="closeMobile()">Productos</a>
   <a href="#proceso" onclick="closeMobile()">Proceso</a>
+  <a href="#propiedades" onclick="closeMobile()">Propiedades</a>
   <a href="#recetas" onclick="closeMobile()">Recetas</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#contacto" onclick="closeMobile()">Contacto</a>
@@ -821,7 +850,7 @@
   <!-- Infusión Comestible -->
   <div class="section-header reveal" style="margin-top:60px;">
     <h2>Infusión <span class="accent">Comestible</span></h2>
-    <p>Disfrútalas en agua caliente o fría — o cómelas directo del sobre</p>
+    <p>Disfrútalas en agua caliente o fría</p>
   </div>
   <div style="display:flex;justify-content:center;">
 
@@ -858,13 +887,162 @@
     <div class="process-step reveal" style="transition-delay:.15s">
       <div class="step-circle">❄️</div>
       <h3>Liofilización</h3>
-      <p>Proceso avanzado que congela la fruta y elimina el agua sin afectar sus nutrientes ni su sabor original.</p>
+      <p>La liofilización es un proceso de deshidratación que elimina el agua de los alimentos congelados mediante sublimación, donde el hielo pasa directamente de sólido a vapor. Al eliminar casi toda el agua, la fruta puede conservarse por más tiempo sin necesidad de añadir azúcar ni conservantes.</p>
     </div>
     <div class="process-step reveal" style="transition-delay:.3s">
       <div class="step-circle">✅</div>
       <h3>Control de Calidad</h3>
       <p>Cada lote pasa por un riguroso control de calidad para garantizar que cumpla con nuestros más altos estándares.</p>
     </div>
+  </div>
+</section>
+
+<!-- ═══ PROPIEDADES Y USOS ═════════════════════════════ -->
+<section id="propiedades">
+  <div class="section-header reveal">
+    <h2>Propiedades y <span class="accent">Usos</span></h2>
+    <p>Descubre los beneficios y formas de disfrutar cada fruta</p>
+  </div>
+  <div class="props-grid">
+
+    <div class="prop-card reveal" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🍓</span>Fresa Liofilizada</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Rica en antioxidantes y vitamina C</li>
+          <li>Sabor intenso y característico</li>
+          <li>Baja en calorías y azúcares</li>
+          <li>Conserva color y aroma natural</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Decoración y saborización de postres</li>
+          <li>Adición a yogures, cereales, granolas</li>
+          <li>Infusiones frutales o tés</li>
+          <li>Polvo de fresa para repostería o suplementos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prop-card reveal" style="transition-delay:.08s" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🍍</span>Piña Liofilizada</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Alto contenido de vitamina C, ideal para fortalecer el sistema inmune</li>
+          <li>Rica en bromelina, enzima que ayuda a la digestión</li>
+          <li>Sabor dulce y tropical muy apetecido</li>
+          <li>Textura crocante y ligera, ideal como snack saludable</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Snacks naturales y saludables</li>
+          <li>Mezclas para granolas, yogures y cereales</li>
+          <li>Rehidratación en jugos, smoothies o postres</li>
+          <li>Insumo en repostería o barras energéticas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prop-card reveal" style="transition-delay:.16s" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🍌</span>Banano Liofilizado</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Fuente natural de potasio y magnesio</li>
+          <li>Aporte de energía rápida, ideal para deportistas</li>
+          <li>Sabor suave y dulce</li>
+          <li>Alta aceptación en niños</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Snack saludable y energético</li>
+          <li>Complemento de batidos y smoothies</li>
+          <li>Topping para avena, cereales o helados</li>
+          <li>Rehidratado como puré para recetas o alimentación infantil</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prop-card reveal" style="transition-delay:.24s" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🟠</span>Uchuva Liofilizada</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Alto contenido de antioxidantes, especialmente polifenoles</li>
+          <li>Rica en vitamina A, C y fósforo</li>
+          <li>Sabor agridulce atractivo e inusual</li>
+          <li>Potencial antiinflamatorio y digestivo</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Consumo directo como snack funcional</li>
+          <li>Rehidratación para uso en repostería gourmet</li>
+          <li>Mezclas con frutos secos</li>
+          <li>Incorporación en chocolates, infusiones o mermeladas artesanales</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prop-card reveal" style="transition-delay:.32s" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🥭</span>Mango Liofilizado</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Rico en vitamina A y C</li>
+          <li>Sabor exótico, tropical y dulce</li>
+          <li>Alta capacidad de saciar el apetito</li>
+          <li>Conserva su textura sin azúcares añadidos</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Snack gourmet o saludable</li>
+          <li>Polvo de mango para batidos, helados o salsas</li>
+          <li>Mezclas funcionales con otras frutas o superalimentos</li>
+          <li>Ingrediente para postres y rellenos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prop-card reveal" style="transition-delay:.4s" onclick="this.classList.toggle('open')">
+      <div class="prop-card-header">
+        <div><span class="prop-emoji">🍇</span>Mix de Frutas Liofilizadas</div>
+        <span class="prop-arrow">▼</span>
+      </div>
+      <div class="prop-card-body">
+        <h4>Propiedades</h4>
+        <ul>
+          <li>Combinación equilibrada entre dulce, ácido y tropical</li>
+          <li>Variedad de vitaminas: C, A, potasio, antioxidantes</li>
+          <li>Alto valor nutricional y sensorial</li>
+          <li>Práctico, atractivo y visualmente colorido</li>
+        </ul>
+        <h4>Usos</h4>
+        <ul>
+          <li>Snacks premium para adultos o niños</li>
+          <li>Mezclas para avenas, bowls o yogures</li>
+          <li>Ingrediente para barras energéticas o granolas</li>
+          <li>Ideal para infusiones frutales o decoración de postres</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -887,9 +1065,45 @@
         <p>Mezcla las frutas liofilizadas con yogur natural y leche de almendras. Agrega un toque de miel y bate hasta obtener una textura suave y cremosa.</p>
       </div>
     </div>
-    <div class="recipe-card reveal" style="transition-delay:.1s">
+    <div class="recipe-card reveal" style="transition-delay:.08s">
+      <span class="recipe-icon">🍫</span>
+      <h3>Chocolate Crunch con Frutas Liofilizadas</h3>
+      <div class="recipe-section">
+        <strong>Ingredientes</strong>
+        <p>Chocolate oscuro 70% cacao, frutas liofilizadas (fresa, frambuesa o mango), nueces o almendras picadas.</p>
+      </div>
+      <div class="recipe-section">
+        <strong>Preparación</strong>
+        <p>Derrite el chocolate oscuro a baño maría o en el microondas. Extiende el chocolate derretido sobre papel para hornear formando una capa delgada. Espolvorea las frutas liofilizadas y las nueces encima. Deja enfriar en el refrigerador hasta que el chocolate se endurezca. Rompe en trozos tipo "bark" y disfruta.</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:.16s">
       <span class="recipe-icon">🥣</span>
-      <h3>Muesli Casero con Frutas Liofilizadas</h3>
+      <h3>Yogur Crocante de Frutas Liofilizadas</h3>
+      <div class="recipe-section">
+        <strong>Ingredientes</strong>
+        <p>Yogur natural o griego, frutas liofilizadas (arándano, fresa o banano), granola natural, semillas de chía.</p>
+      </div>
+      <div class="recipe-section">
+        <strong>Preparación</strong>
+        <p>Sirve el yogur en un bowl. Añade la granola y las semillas de chía. Tritura ligeramente las frutas liofilizadas y espolvoréalas encima. Mezcla suavemente antes de comer para lograr una textura cremosa y crujiente.</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:.24s">
+      <span class="recipe-icon">🥞</span>
+      <h3>Pancakes con Polvo de Fruta Liofilizada</h3>
+      <div class="recipe-section">
+        <strong>Ingredientes</strong>
+        <p>Harina de avena o integral, leche o bebida vegetal, huevo, frutas liofilizadas (fresa o mango).</p>
+      </div>
+      <div class="recipe-section">
+        <strong>Preparación</strong>
+        <p>Tritura las frutas liofilizadas hasta obtener un polvo fino. Mezcla la harina, el huevo y la leche hasta formar una masa suave. Agrega una cucharada del polvo de fruta a la mezcla. Cocina los pancakes en una sartén caliente hasta que estén dorados. Sirve con más polvo de fruta espolvoreado encima.</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:.32s">
+      <span class="recipe-icon">🥣</span>
+      <h3>Bowl de Avena y LioFruts</h3>
       <div class="recipe-section">
         <strong>Ingredientes</strong>
         <p>Frutas liofilizadas (fresa, banano), avena, nueces, semillas de chía.</p>
@@ -897,6 +1111,18 @@
       <div class="recipe-section">
         <strong>Preparación</strong>
         <p>Mezcla las frutas liofilizadas con avena, nueces y semillas de chía. Sirve con yogur o leche para un desayuno saludable y energizante.</p>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:.4s">
+      <span class="recipe-icon">🫐</span>
+      <h3>Bocados de Coco con Frutas Liofilizadas</h3>
+      <div class="recipe-section">
+        <strong>Ingredientes</strong>
+        <p>Frutas liofilizadas (fresa, frambuesa o mango), coco rallado natural, aceite de coco.</p>
+      </div>
+      <div class="recipe-section">
+        <strong>Preparación</strong>
+        <p>Tritura las frutas liofilizadas hasta obtener pequeños trozos o polvo. Mezcla con el coco rallado en un recipiente. Agrega poco a poco el aceite de coco hasta formar una mezcla que se pueda compactar. Forma pequeñas bolitas con las manos. Refrigera durante 20 minutos antes de servir.</p>
       </div>
     </div>
   </div>
@@ -1080,7 +1306,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-brand-logo">
-          <img src="Brand_assets/Liofruts.jpg" alt="Liofilizaciones Quindío">
+          <img src="Brand_assets/Liofruts_Logo.jpg" alt="Liofilizaciones Quindío">
           <div class="nav-brand-text">
             <span class="nav-brand-company" style="color:var(--yellow);">Liofilizaciones Quindío</span>
             <span class="nav-brand-product" style="color:rgba(255,255,255,0.6);">LioFruts</span>
