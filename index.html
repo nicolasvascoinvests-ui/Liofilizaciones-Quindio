@@ -211,7 +211,7 @@
     height: 220px; display: flex; align-items: center; justify-content: center;
     overflow: hidden; position: relative;
   }
-  .product-img img { width: 100%; height: 100%; object-fit: cover; }
+  .product-img img { width: 100%; height: 100%; object-fit: contain; }
   .product-emoji-bg {
     width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
     font-size: 6rem;
@@ -740,7 +740,7 @@
       </div>
       <div class="product-info">
         <h3>🍓 Fresa Liofilizada</h3>
-        <p>Dulce y crujiente, perfecta para snackear en cualquier momento.</p>
+        <p>Dulce y crujiente, perfecta para disfrutar en cualquier momento.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 10g</small></div>
         <button class="btn-add" onclick="addToCart('Fresa Liofilizada', 4100, '🍓')">+ Agregar al Carrito</button>
       </div>
@@ -795,10 +795,10 @@
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
-        <h3>🫐 Uchuva Liofilizada</h3>
+        <h3>🟠 Uchuva Liofilizada</h3>
         <p>Fruta exótica colombiana, llena de nutrientes y sabor único.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 15g</small></div>
-        <button class="btn-add" onclick="addToCart('Uchuva Liofilizada', 4100, '🫐')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart('Uchuva Liofilizada', 4100, '🟠')">+ Agregar al Carrito</button>
       </div>
     </div>
 
@@ -823,35 +823,20 @@
     <h2>Infusión <span class="accent">Comestible</span></h2>
     <p>Disfrútalas en agua caliente o fría — o cómelas directo del sobre</p>
   </div>
-  <div class="products-grid">
+  <div style="display:flex;justify-content:center;">
 
-    <!-- Infusión Frutos Amarillos -->
-    <div class="product-card reveal">
+    <!-- Infusión Comestible - Caja Mixta -->
+    <div class="product-card reveal" style="max-width:380px;width:100%;">
       <div class="product-img">
-        <img src="Brand_assets/Infusion Frutos Amarillos.png" alt="Infusión Comestible Frutos Amarillos LioFruts" loading="lazy">
+        <img src="Brand_assets/Infusiones comestibles.png" alt="Infusión Comestible Caja Mixta LioFruts" loading="lazy">
         <span class="product-badge">Infusión Comestible</span>
       </div>
       <div class="product-info">
-        <h3>🌟 Frutos Amarillos</h3>
-        <p>Infusión comestible de frutos amarillos liofilizados, llena de sabor y nutrientes.</p>
+        <h3>🍵 Caja Mixta</h3>
+        <p>Caja con 4 sobres de infusión comestible liofilizada: 2 de frutos rojos y 2 de frutos amarillos.</p>
         <div style="font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:4px;">4 sobres de 7g por caja</div>
         <div class="product-price">$13.000 COP</div>
-        <button class="btn-add" onclick="addToCart('Infusión Frutos Amarillos', 13000, '🌟')">+ Agregar al Carrito</button>
-      </div>
-    </div>
-
-    <!-- Infusión Frutos Rojos -->
-    <div class="product-card reveal" style="transition-delay:.08s">
-      <div class="product-img">
-        <img src="Brand_assets/Infusion Frutos Rojos.png" alt="Infusión Comestible Frutos Rojos LioFruts" loading="lazy">
-        <span class="product-badge">Infusión Comestible</span>
-      </div>
-      <div class="product-info">
-        <h3>❤️ Frutos Rojos</h3>
-        <p>Infusión comestible de frutos rojos liofilizados, antioxidante y deliciosa.</p>
-        <div style="font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:4px;">4 sobres de 7g por caja</div>
-        <div class="product-price">$13.000 COP</div>
-        <button class="btn-add" onclick="addToCart('Infusión Frutos Rojos', 13000, '❤️')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart('Infusión Caja Mixta', 13000, '🍵')">+ Agregar al Carrito</button>
       </div>
     </div>
 
@@ -1058,7 +1043,8 @@
         <span class="contact-item-icon">📱</span>
         <div class="contact-item-text">
           <strong>Redes Sociales</strong>
-          <a href="https://www.instagram.com/liofilizaciones?igsh=MTRqMWdqb29reGdjdg%3D%3D" target="_blank" rel="noopener">@liofilizaciones</a>
+          <a href="https://www.instagram.com/liofilizaciones?igsh=MTRqMWdqb29reGdjdg%3D%3D" target="_blank" rel="noopener">Instagram: @liofilizaciones</a>
+          <a href="https://www.facebook.com/share/15YUjkuvpn/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook: @liofilizaciones</a>
         </div>
       </div>
       <a href="https://wa.me/573233658793" target="_blank" class="btn-whatsapp">
@@ -1102,9 +1088,15 @@
         </div>
         <p>En Liofilizaciones Quindío preservamos lo mejor de cada producto, ofreciendo calidad natural, sabor auténtico y frescura en cada bocado.</p>
         <div class="footer-social">
-          <a href="https://www.facebook.com/share/15YUjkuvpn/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">📘</a>
-          <a href="https://www.instagram.com/liofilizaciones?igsh=MTRqMWdqb29reGdjdg%3D%3D" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">📸</a>
-          <a href="https://wa.me/573233658793" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
+          <a href="https://www.facebook.com/share/15YUjkuvpn/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/liofilizaciones?igsh=MTRqMWdqb29reGdjdg%3D%3D" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/573233658793" target="_blank" class="social-link" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
       </div>
       <div class="footer-col">
@@ -1126,8 +1118,7 @@
           <li><a href="#productos">Banano Liofilizado</a></li>
           <li><a href="#productos">Uchuva Liofilizada</a></li>
           <li><a href="#productos">Mango Liofilizado</a></li>
-          <li><a href="#productos">Infusión Frutos Amarillos</a></li>
-          <li><a href="#productos">Infusión Frutos Rojos</a></li>
+          <li><a href="#productos">Infusión Caja Mixta</a></li>
         </ul>
       </div>
     </div>
@@ -1394,19 +1385,21 @@
 
   function initGoogleReviews() {
     const reviews = [
-      { author_name: 'Martha Henao',               rating: 5, text: 'Excellent product... healthy and very tasty.' },
-      { author_name: 'Marisol Riveros',             rating: 5, text: 'These products, besides being of excellent quality, are healthy and delicious; 100% recommended.' },
-      { author_name: 'Jhon David Agudelo Mateus',   rating: 5, text: "I've tried all the varieties they offer and I like them quite a lot, especially the banana and pineapple ones — the cape gooseberry ones taste much better than when they're fresh." },
-      { author_name: 'Óscar Vásquez',               rating: 5, text: 'I loved the product; the strawberry was absolutely delicious. Highly recommended!' },
-      { author_name: 'Jose Edier Salgado Loaiza',   rating: 5, text: 'A spectacular product in all its presentations, and it can be eaten at any time of day.' },
-      { author_name: 'Luz Miryam Rincon',           rating: 5, text: 'Dried fruit retains all the vitamins and antioxidants of fresh fruit, making it completely healthy to include in all foods.' },
-      { author_name: 'Francisco Javier Riveros',    rating: 5, text: 'Very practical due to its light weight and volume — it preserves the flavor and nutritional characteristics perfectly.' },
-      { author_name: 'Gloria E. Henao',             rating: 5, text: 'Delicious and healthy. Very good quality.' },
-      { author_name: 'Patricia Duque Toro',         rating: 5, text: 'I love your products, 100 out of 100!' },
-      { author_name: 'Martha Liliana Duque Toro',   rating: 5, text: 'Excellent product, I love it!' },
-      { author_name: 'Oscar Vasco',                 rating: 5, text: 'Good product, well presented.' },
-      { author_name: 'Helmer Peña',                 rating: 5, text: 'Excellent, unique...' },
-      { author_name: 'Mahawi Resort',               rating: 5, text: 'Excellent, delicious!' },
+      { author_name: 'Martha Henao',               rating: 5, text: 'Excelente producto... saludable y muy rico.' },
+      { author_name: 'Marisol Riveros',             rating: 5, text: 'Estos productos, además de ser de excelente calidad, son saludables y deliciosos; 100% recomendados.' },
+      { author_name: 'Jhon David Agudelo Mateus',   rating: 5, text: 'He probado todas las variedades que ofrecen y me gustan bastante, especialmente las de banano y piña — las de uchuva saben mucho mejor que cuando están frescas.' },
+      { author_name: 'Óscar Vásquez',               rating: 5, text: 'Me encantó el producto; la fresa estaba absolutamente deliciosa. ¡Muy recomendado!' },
+      { author_name: 'Jose Edier Salgado Loaiza',   rating: 5, text: 'Un producto espectacular en todas sus presentaciones, y se puede comer a cualquier hora del día.' },
+      { author_name: 'Luz Miryam Rincon',           rating: 5, text: 'La fruta deshidratada conserva todas las vitaminas y antioxidantes de la fruta fresca, siendo completamente saludable para incluir en todos los alimentos.' },
+      { author_name: 'Francisco Javier Riveros',    rating: 5, text: 'Muy práctico por su poco peso y volumen — conserva el sabor y las características nutricionales perfectamente.' },
+      { author_name: 'Gloria E. Henao',             rating: 5, text: 'Delicioso y saludable. Muy buena calidad.' },
+      { author_name: 'Patricia Duque Toro',         rating: 5, text: '¡Me encantan sus productos, 100 de 100!' },
+      { author_name: 'Martha Liliana Duque Toro',   rating: 5, text: '¡Excelente producto, me encanta!' },
+      { author_name: 'Oscar Vasco',                 rating: 5, text: 'Buen producto, bien presentado.' },
+      { author_name: 'Helmer Peña',                 rating: 5, text: 'Excelente, único...' },
+      { author_name: 'Mahawi Resort',               rating: 5, text: '¡Excelente, delicioso!' },
+      { author_name: 'Carlos Andrés López',          rating: 5, text: 'Productos de altísima calidad. La piña liofilizada es increíble, conserva todo el sabor natural.' },
+      { author_name: 'Diana Marcela Gómez',          rating: 5, text: 'Me fascinan las frutas liofilizadas, perfectas para llevar de snack. ¡Súper recomendado!' },
     ];
     _buildCarousel(reviews, 5.0, 30);
   }
