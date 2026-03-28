@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="Brand_assets/favicon.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.web3forms.com; frame-ancestors 'none';">
+<link rel="icon" type="image/webp" href="Brand_assets/favicon.webp">
 <link rel="apple-touch-icon" href="Brand_assets/favicon.png">
 <title>LioFruts — Fruta Liofilizada 100% Colombiana</title>
 <meta name="description" content="Descubre LioFruts, snacks de fruta liofilizada 100% colombiana sin conservantes. Fresa, piña, mango, banano, uchuva y más. De Liofilizaciones Quindío para Colombia.">
@@ -19,7 +20,9 @@
 <meta name="twitter:title" content="LioFruts | Fruta Liofilizada 100% Colombiana">
 <meta name="twitter:description" content="Snacks de fruta liofilizada 100% colombiana sin conservantes. De Liofilizaciones Quindío para Colombia.">
 <meta name="twitter:image" content="https://liofruts.co/Brand_assets/liofruts-logo.jpg">
+<link rel="preload" as="image" href="Brand_assets/main-picture-1.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -32,7 +35,7 @@
     --orange: #FF7A00;
     --orange-light: #FFF3E0;
     --dark: #1A1A1A;
-    --gray: #6B7280;
+    --gray: #4B5563;
     --white: #FFFFFF;
     --radius: 16px;
     --shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -90,7 +93,7 @@
   }
   .cart-badge.show { display: flex; }
 
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 10px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
   .hamburger span { display: block; width: 24px; height: 3px; background: var(--dark); border-radius: 3px; transition: .3s; }
 
   .mobile-menu {
@@ -143,14 +146,14 @@
     background: var(--green); color: var(--white);
     padding: 14px 32px; border-radius: 50px; font-weight: 800;
     font-size: 1rem; text-decoration: none; font-family: 'Nunito', sans-serif;
-    border: 3px solid var(--green); transition: all .2s; display: inline-block;
+    border: 3px solid var(--green); transition: background .2s, border-color .2s, transform .2s, color .2s; display: inline-block;
   }
   .btn-primary:hover { background: var(--dark); border-color: var(--dark); transform: translateY(-2px); }
   .btn-outline {
     background: transparent; color: var(--dark);
     padding: 14px 32px; border-radius: 50px; font-weight: 800;
     font-size: 1rem; text-decoration: none; font-family: 'Nunito', sans-serif;
-    border: 3px solid var(--dark); transition: all .2s; display: inline-block;
+    border: 3px solid var(--dark); transition: background .2s, border-color .2s, transform .2s, color .2s; display: inline-block;
   }
   .btn-outline:hover { background: var(--dark); color: var(--white); }
 
@@ -164,10 +167,7 @@
     opacity: 0; transition: opacity 1s ease;
   }
   .hero-slideshow img.active { opacity: 1; }
-  .hero-image img {
-    width: 100%; max-width: 520px;
-    border-radius: 24px; box-shadow: var(--shadow-lg);
-    object-fit: cover;
+  .hero-slideshow {
     animation: heroFloat 5s ease-in-out infinite;
   }
   @keyframes heroFloat { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-12px) rotate(1deg)} }
@@ -214,10 +214,6 @@
     overflow: hidden; position: relative;
   }
   .product-img img { width: 100%; height: 100%; object-fit: contain; }
-  .product-emoji-bg {
-    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-    font-size: 6rem;
-  }
 
   .product-badge {
     position: absolute; top: 12px; right: 12px;
@@ -268,7 +264,7 @@
     background: var(--yellow-light); border-radius: var(--radius); overflow: hidden;
     box-shadow: var(--shadow); transition: transform .3s;
   }
-  .prop-card:hover { transform: translateY(-4px); }
+  .prop-card:hover, .prop-card:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
   .prop-card-header {
     padding: 20px 22px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
     font-weight: 800; font-size: 1.05rem; color: var(--dark); user-select: none;
@@ -495,7 +491,7 @@
   .cart-item-info span { color: var(--green); font-weight: 800; font-size: .9rem; }
   .cart-item-qty { display: flex; align-items: center; gap: 8px; }
   .qty-btn {
-    width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--green);
+    width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--green);
     background: none; cursor: pointer; font-size: 1rem; font-weight: 800;
     color: var(--green); transition: background .2s, color .2s; line-height: 1;
     display: flex; align-items: center; justify-content: center;
@@ -565,12 +561,11 @@
     .process-steps { flex-direction: column; align-items: center; gap: 32px; }
     .process-steps::before { display: none; }
     .recipes-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
+.contact-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .cart-btn { display: none; }
-    .float-cart { display: flex; }
+    .float-cart.has-items { display: flex; }
   }
 
   @media (max-width: 480px) {
@@ -578,6 +573,99 @@
     .hero-text h1 { font-size: 2.2rem; }
     .products-grid { grid-template-columns: 1fr; }
   }
+
+  /* ─── SKIP TO CONTENT ─────────────────────────────── */
+  .skip-to-content {
+    position: absolute; top: -100px; left: 16px; z-index: 10000;
+    background: var(--green); color: var(--white);
+    padding: 12px 24px; border-radius: 0 0 8px 8px;
+    font-weight: 800; font-size: .95rem; text-decoration: none;
+    transition: top .2s;
+  }
+  .skip-to-content:focus { top: 0; }
+
+  /* ─── FOCUS-VISIBLE GLOBAL ─────────────────────────── */
+  :focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 2px;
+  }
+  .form-group input:focus-visible, .form-group textarea:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 0;
+    border-color: var(--green);
+  }
+
+  /* ─── BACK TO TOP ──────────────────────────────────── */
+  .back-to-top {
+    position: fixed; bottom: 24px; left: 24px; z-index: 1500;
+    background: var(--orange); color: var(--white);
+    border: none; cursor: pointer; border-radius: 50%;
+    width: 48px; height: 48px; font-size: 1.4rem;
+    box-shadow: 0 4px 16px rgba(255,122,0,.35);
+    transition: transform .2s, opacity .3s, background .2s;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: all; }
+  .back-to-top:hover { background: var(--green); transform: scale(1.1); }
+
+  /* ─── MINIMUM ORDER NOTICE ─────────────────────────── */
+  .min-order-notice {
+    display: flex; align-items: center; gap: 8px; justify-content: center;
+    background: var(--white); border: 2px solid var(--orange);
+    border-radius: 50px; padding: 8px 20px; max-width: 480px; margin: 0 auto 32px;
+    font-size: .88rem; font-weight: 700; color: #9A4900;
+  }
+  .min-order-notice span { font-size: 1.1rem; }
+
+  /* ─── PRIVACY / LEGAL MODALS ───────────────────────── */
+  .legal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 3000;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .legal-overlay.open { display: flex; }
+  .legal-modal {
+    background: var(--white); border-radius: var(--radius);
+    max-width: 700px; width: 100%; max-height: 85vh; overflow-y: auto;
+    padding: 40px 36px; box-shadow: var(--shadow-lg); position: relative;
+  }
+  .legal-modal h2 { font-size: 1.6rem; color: var(--green); margin-bottom: 20px; }
+  .legal-modal h3 { font-size: 1.1rem; color: var(--dark); margin: 20px 0 8px; }
+  .legal-modal p, .legal-modal li { font-size: .92rem; color: var(--dark); line-height: 1.7; font-weight: 600; }
+  .legal-modal ul { padding-left: 20px; margin: 8px 0 16px; }
+  .legal-modal .legal-close {
+    position: absolute; top: 16px; right: 20px; background: none; border: none;
+    font-size: 1.6rem; cursor: pointer; color: var(--gray); transition: color .2s;
+  }
+  .legal-modal .legal-close:hover { color: var(--dark); }
+
+  /* ─── CONSENT CHECKBOX ─────────────────────────────── */
+  .consent-group {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: .85rem; color: var(--dark); font-weight: 600; line-height: 1.5;
+  }
+  .consent-group input[type="checkbox"] {
+    margin-top: 3px; width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0;
+  }
+  .consent-group a { color: var(--green); text-decoration: underline; }
+
+  /* ─── COOKIE NOTICE ────────────────────────────────── */
+  .cookie-notice {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 2500;
+    background: var(--dark); color: var(--white); padding: 16px 5%;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    flex-wrap: wrap; font-size: .88rem; font-weight: 600;
+    transform: translateY(100%); transition: transform .4s;
+  }
+  .cookie-notice.visible { transform: translateY(0); }
+  .cookie-notice a { color: var(--yellow); }
+  .cookie-notice button {
+    background: var(--green); color: var(--white); border: none;
+    padding: 8px 20px; border-radius: 50px; font-weight: 800;
+    font-family: 'Nunito', sans-serif; cursor: pointer; font-size: .85rem;
+    transition: background .2s;
+  }
+  .cookie-notice button:hover { background: var(--orange); }
 </style>
 <script type="application/ld+json">
 {
@@ -660,6 +748,104 @@
           }
         }
       ]
+    },
+    {
+      "@type": "Product",
+      "name": "Fresa Liofilizada LioFruts",
+      "description": "Fresa liofilizada 100% colombiana, sin azúcar añadida ni conservantes. Snack crujiente y natural de 10g.",
+      "image": "https://liofruts.co/Brand_assets/fresa.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4100",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Piña Liofilizada LioFruts",
+      "description": "Piña liofilizada 100% colombiana con aroma tropical intenso. Snack natural de 15g.",
+      "image": "https://liofruts.co/Brand_assets/pina.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4100",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Mix de Frutas Liofilizadas LioFruts",
+      "description": "Combinación de frutas liofilizadas colombianas en una bolsa de 25g. Sin aditivos.",
+      "image": "https://liofruts.co/Brand_assets/mix.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "5700",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Banano Liofilizado LioFruts",
+      "description": "Banano liofilizado 100% colombiano, perfecto para batidos y snacks. 20g.",
+      "image": "https://liofruts.co/Brand_assets/banano.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4100",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Uchuva Liofilizada LioFruts",
+      "description": "Uchuva liofilizada colombiana, fruta exótica llena de nutrientes. 15g.",
+      "image": "https://liofruts.co/Brand_assets/uchuva.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4100",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Mango Liofilizado LioFruts",
+      "description": "Mango liofilizado 100% colombiano con sabor tropical intenso. 15g.",
+      "image": "https://liofruts.co/Brand_assets/mango.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4100",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Infusión Comestible Caja Mixta LioFruts",
+      "description": "Caja con 4 sobres de infusión comestible liofilizada: frutos rojos y amarillos. 4x7g.",
+      "image": "https://liofruts.co/Brand_assets/infusiones-comestibles.png",
+      "brand": { "@type": "Brand", "name": "LioFruts" },
+      "offers": {
+        "@type": "Offer",
+        "price": "13000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://liofruts.co/#productos"
+      }
     }
   ]
 }
@@ -667,10 +853,13 @@
 </head>
 <body>
 
+<!-- Skip to content link -->
+<a href="#productos" class="skip-to-content">Ir al contenido principal</a>
+
 <!-- ═══ NAVBAR ═══════════════════════════════════════ -->
 <nav id="navbar">
   <a href="#" class="nav-brand">
-    <img src="Brand_assets/liofruts-logo.jpg" alt="Liofilizaciones Quindío Logo">
+    <picture><source srcset="Brand_assets/liofruts-logo.webp" type="image/webp"><img src="Brand_assets/liofruts-logo.jpg" alt="Liofilizaciones Quindío Logo"></picture>
     <div class="nav-brand-text">
       <span class="nav-brand-company">Liofilizaciones Quindío</span>
       <span class="nav-brand-product">LioFruts</span>
@@ -723,8 +912,8 @@
     </div>
     <div class="hero-image">
       <div class="hero-slideshow" id="heroSlideshow">
-        <img src="Brand_assets/main-picture-1.jpeg" alt="Snacks de fruta liofilizada LioFruts" class="active">
-        <img src="Brand_assets/main-picture-2.png" alt="Fruta liofilizada LioFruts — Liofilizaciones Quindío">
+        <picture><source srcset="Brand_assets/main-picture-1.webp" type="image/webp"><img src="Brand_assets/main-picture-1.jpeg" alt="Snacks de fruta liofilizada LioFruts" class="active" fetchpriority="high" width="520" height="420"></picture>
+        <picture><source srcset="Brand_assets/main-picture-2.webp" type="image/webp"><img src="Brand_assets/main-picture-2.png" alt="Fruta liofilizada LioFruts — Liofilizaciones Quindío" width="520" height="420"></picture>
       </div>
     </div>
   </div>
@@ -761,89 +950,92 @@
     <h2>Nuestros <span class="accent">Productos Liofilizados</span></h2>
     <p>Seleccionados y procesados con el más alto estándar de calidad</p>
   </div>
+  <div class="min-order-notice reveal">
+    <span>ℹ️</span> Pedido mínimo: 12 productos o $50.000 COP
+  </div>
   <div class="products-grid">
 
     <!-- Fresa -->
     <div class="product-card reveal">
       <div class="product-img">
-        <img src="Brand_assets/fresa.png" alt="Fresa Liofilizada LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/fresa.webp" type="image/webp"><img src="Brand_assets/fresa.png" alt="Fresa Liofilizada LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🍓 Fresa Liofilizada</h3>
         <p>Dulce y crujiente, perfecta para disfrutar en cualquier momento.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 10g</small></div>
-        <button class="btn-add" onclick="addToCart('Fresa Liofilizada', 4100, '🍓')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Fresa Liofilizada', 4100, '🍓')" aria-label="Agregar Fresa Liofilizada al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
     <!-- Piña -->
     <div class="product-card reveal" style="transition-delay:.08s">
       <div class="product-img">
-        <img src="Brand_assets/pina.png" alt="Piña Liofilizada LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/pina.webp" type="image/webp"><img src="Brand_assets/pina.png" alt="Piña Liofilizada LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🍍 Piña Liofilizada</h3>
         <p>Aroma tropical e intenso sabor que te transporta al Quindío.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 15g</small></div>
-        <button class="btn-add" onclick="addToCart('Piña Liofilizada', 4100, '🍍')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Piña Liofilizada', 4100, '🍍')" aria-label="Agregar Piña Liofilizada al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
     <!-- Mix -->
     <div class="product-card reveal" style="transition-delay:.16s">
       <div class="product-img">
-        <img src="Brand_assets/mix.png" alt="Mix de Frutas Liofilizadas LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/mix.webp" type="image/webp"><img src="Brand_assets/mix.png" alt="Mix de Frutas Liofilizadas LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🎨 Mix de Frutas</h3>
         <p>La mejor combinación de frutas liofilizadas en una sola bolsa.</p>
         <div class="product-price">$5.700 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 25g</small></div>
-        <button class="btn-add" onclick="addToCart('Mix de Frutas', 5700, '🎨')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Mix de Frutas', 5700, '🎨')" aria-label="Agregar Mix de Frutas al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
     <!-- Banano -->
     <div class="product-card reveal" style="transition-delay:.24s">
       <div class="product-img">
-        <img src="Brand_assets/banano.png" alt="Banano Liofilizado LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/banano.webp" type="image/webp"><img src="Brand_assets/banano.png" alt="Banano Liofilizado LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🍌 Banano Liofilizado</h3>
         <p>Perfecto para enriquecer recetas, batidos y snacks saludables.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 20g</small></div>
-        <button class="btn-add" onclick="addToCart('Banano Liofilizado', 4100, '🍌')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Banano Liofilizado', 4100, '🍌')" aria-label="Agregar Banano Liofilizado al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
     <!-- Uchuva -->
     <div class="product-card reveal" style="transition-delay:.32s">
       <div class="product-img">
-        <img src="Brand_assets/uchuva.png" alt="Uchuva Liofilizada LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/uchuva.webp" type="image/webp"><img src="Brand_assets/uchuva.png" alt="Uchuva Liofilizada LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🟠 Uchuva Liofilizada</h3>
         <p>Fruta exótica colombiana, llena de nutrientes y sabor único.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 15g</small></div>
-        <button class="btn-add" onclick="addToCart('Uchuva Liofilizada', 4100, '🟠')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Uchuva Liofilizada', 4100, '🟠')" aria-label="Agregar Uchuva Liofilizada al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
     <!-- Mango -->
     <div class="product-card reveal" style="transition-delay:.40s">
       <div class="product-img">
-        <img src="Brand_assets/mango.png" alt="Mango Liofilizado LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/mango.webp" type="image/webp"><img src="Brand_assets/mango.png" alt="Mango Liofilizado LioFruts" loading="lazy"></picture>
         <span class="product-badge">100% Natural</span>
       </div>
       <div class="product-info">
         <h3>🥭 Mango Liofilizado</h3>
         <p>Delicioso sabor tropical con vitamina C, antioxidantes y fibra.</p>
         <div class="product-price">$4.100 COP <small style="font-size:.65em;font-weight:600;color:var(--gray)">· 15g</small></div>
-        <button class="btn-add" onclick="addToCart('Mango Liofilizado', 4100, '🥭')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Mango Liofilizado', 4100, '🥭')" aria-label="Agregar Mango Liofilizado al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
@@ -859,7 +1051,7 @@
     <!-- Infusión Comestible - Caja Mixta -->
     <div class="product-card reveal" style="max-width:380px;width:100%;">
       <div class="product-img">
-        <img src="Brand_assets/infusiones-comestibles.png" alt="Infusión Comestible Caja Mixta LioFruts" loading="lazy">
+        <picture><source srcset="Brand_assets/infusiones-comestibles.webp" type="image/webp"><img src="Brand_assets/infusiones-comestibles.png" alt="Infusión Comestible Caja Mixta LioFruts" loading="lazy"></picture>
         <span class="product-badge">Infusión Comestible</span>
       </div>
       <div class="product-info">
@@ -867,7 +1059,7 @@
         <p>Caja con 4 sobres de infusión comestible liofilizada: 2 de frutos rojos y 2 de frutos amarillos.</p>
         <div style="font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:4px;">4 sobres de 7g por caja</div>
         <div class="product-price">$13.000 COP</div>
-        <button class="btn-add" onclick="addToCart('Infusión Caja Mixta', 13000, '🍵')">+ Agregar al Carrito</button>
+        <button class="btn-add" onclick="addToCart(event, 'Infusión Caja Mixta', 13000, '🍵')" aria-label="Agregar Infusión Caja Mixta al carrito">+ Agregar al Carrito</button>
       </div>
     </div>
 
@@ -889,7 +1081,7 @@
     <div class="process-step reveal" style="transition-delay:.15s">
       <div class="step-circle">❄️</div>
       <h3>Liofilización</h3>
-      <p>La liofilización es un proceso de deshidratación que elimina el agua de los alimentos congelados mediante sublimación, donde el hielo pasa directamente de sólido a vapor. Al eliminar casi toda el agua, la fruta puede conservarse por más tiempo sin necesidad de añadir azúcar ni conservantes.</p>
+      <p>Congelamos la fruta y eliminamos el agua por sublimación, preservando sabor, color y nutrientes sin conservantes.</p>
     </div>
     <div class="process-step reveal" style="transition-delay:.3s">
       <div class="step-circle">✅</div>
@@ -907,7 +1099,7 @@
   </div>
   <div class="props-grid">
 
-    <div class="prop-card reveal" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🍓</span>Fresa Liofilizada</div>
         <span class="prop-arrow">▼</span>
@@ -930,7 +1122,7 @@
       </div>
     </div>
 
-    <div class="prop-card reveal" style="transition-delay:.08s" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" style="transition-delay:.08s" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🍍</span>Piña Liofilizada</div>
         <span class="prop-arrow">▼</span>
@@ -953,7 +1145,7 @@
       </div>
     </div>
 
-    <div class="prop-card reveal" style="transition-delay:.16s" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" style="transition-delay:.16s" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🍌</span>Banano Liofilizado</div>
         <span class="prop-arrow">▼</span>
@@ -976,7 +1168,7 @@
       </div>
     </div>
 
-    <div class="prop-card reveal" style="transition-delay:.24s" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" style="transition-delay:.24s" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🟠</span>Uchuva Liofilizada</div>
         <span class="prop-arrow">▼</span>
@@ -999,7 +1191,7 @@
       </div>
     </div>
 
-    <div class="prop-card reveal" style="transition-delay:.32s" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" style="transition-delay:.32s" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🥭</span>Mango Liofilizado</div>
         <span class="prop-arrow">▼</span>
@@ -1022,7 +1214,7 @@
       </div>
     </div>
 
-    <div class="prop-card reveal" style="transition-delay:.4s" onclick="this.classList.toggle('open')">
+    <div class="prop-card reveal" style="transition-delay:.4s" tabindex="0" role="button" aria-expanded="false">
       <div class="prop-card-header">
         <div><span class="prop-emoji">🍇</span>Mix de Frutas Liofilizadas</div>
         <span class="prop-arrow">▼</span>
@@ -1134,7 +1326,7 @@
 <section id="testimonios">
   <div class="section-header reveal">
     <h2>Lo Que Dicen Nuestros <span class="accent">Clientes</span></h2>
-    <p>Reseñas reales verificadas por Google</p>
+    <p>Experiencias reales de quienes ya probaron nuestros productos</p>
   </div>
 
   <!-- Overall rating badge (shown after API loads) -->
@@ -1159,8 +1351,7 @@
   <div class="carousel-dots" id="carouselDots"></div>
 
   <div class="reviews-google-badge">
-    <img src="https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png" alt="Google" width="14" height="14">
-    Reseñas verificadas por Google
+    Lo que dicen nuestros clientes
   </div>
 </section>
 
@@ -1283,17 +1474,22 @@
       <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="1b172615-adfc-4959-b122-690fae529c56">
         <input type="hidden" name="subject" value="Nuevo mensaje desde LioFruts">
+        <input type="checkbox" name="botcheck" style="display:none!important" tabindex="-1" autocomplete="off">
         <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+          <label for="fieldNombre">Nombre</label>
+          <input type="text" id="fieldNombre" name="nombre" placeholder="Tu nombre completo" required maxlength="200">
         </div>
         <div class="form-group">
-          <label>Correo Electrónico</label>
-          <input type="email" name="email" placeholder="tu@correo.com" required>
+          <label for="fieldEmail">Correo Electrónico</label>
+          <input type="email" id="fieldEmail" name="email" placeholder="tu@correo.com" required maxlength="254">
         </div>
         <div class="form-group">
-          <label>Mensaje</label>
-          <textarea name="mensaje" placeholder="¿En qué podemos ayudarte? ¿Tienes algún pedido especial?" required></textarea>
+          <label for="fieldMensaje">Mensaje</label>
+          <textarea id="fieldMensaje" name="mensaje" placeholder="¿En qué podemos ayudarte? ¿Tienes algún pedido especial?" required maxlength="2000"></textarea>
+        </div>
+        <div class="consent-group">
+          <input type="checkbox" id="consentCheck" name="consent" required>
+          <label for="consentCheck">Acepto la <a href="#" onclick="event.preventDefault();openLegal('privacy')">Política de Privacidad</a> y el tratamiento de mis datos personales conforme a la Ley 1581 de 2012.</label>
         </div>
         <button type="submit" class="btn-submit" id="submitBtn">Enviar Mensaje</button>
         <p id="formStatus" style="display:none; margin-top:12px; font-weight:700; text-align:center;"></p>
@@ -1308,7 +1504,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-brand-logo">
-          <img src="Brand_assets/liofruts-logo.jpg" alt="Liofilizaciones Quindío">
+          <picture><source srcset="Brand_assets/liofruts-logo.webp" type="image/webp"><img src="Brand_assets/liofruts-logo.jpg" alt="Liofilizaciones Quindío"></picture>
           <div class="nav-brand-text">
             <span class="nav-brand-company" style="color:var(--yellow);">Liofilizaciones Quindío</span>
             <span class="nav-brand-product" style="color:rgba(255,255,255,0.6);">LioFruts</span>
@@ -1352,10 +1548,94 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 LioFruts — Liofilizaciones Quindío. Todos los derechos reservados.</p>
+      <p>
+        <a href="#" onclick="event.preventDefault();openLegal('privacy')" style="color:#9CA3AF;text-decoration:underline;margin-right:16px;">Política de Privacidad</a>
+        <a href="#" onclick="event.preventDefault();openLegal('terms')" style="color:#9CA3AF;text-decoration:underline;">Términos y Condiciones</a>
+      </p>
       <p>Hecho con 🍓 en Armenia, Quindío, Colombia</p>
     </div>
   </div>
 </footer>
+
+<!-- ═══ PRIVACY POLICY MODAL ═════════════════════════ -->
+<div class="legal-overlay" id="privacyOverlay" onclick="if(event.target===this)closeLegal('privacy')">
+  <div class="legal-modal">
+    <button class="legal-close" onclick="closeLegal('privacy')" aria-label="Cerrar">&times;</button>
+    <h2>Política de Privacidad</h2>
+    <p><strong>Liofilizaciones Quindío (LioFruts)</strong> — NIT a confirmar<br>Última actualización: 27 de marzo de 2026</p>
+
+    <h3>1. Datos que recopilamos</h3>
+    <p>Cuando usas nuestro formulario de contacto, recopilamos: nombre y correo electrónico. No almacenamos datos de pago — los pedidos se procesan vía WhatsApp.</p>
+
+    <h3>2. Finalidad del tratamiento</h3>
+    <ul>
+      <li>Responder a tu consulta o mensaje</li>
+      <li>Gestionar pedidos y entregas</li>
+      <li>Enviarte información sobre productos si lo autorizas</li>
+    </ul>
+
+    <h3>3. Encargado del tratamiento</h3>
+    <p>Los datos del formulario de contacto son procesados por <strong>Web3Forms</strong> (web3forms.com), un servicio de terceros que actúa como encargado del tratamiento para el envío de formularios.</p>
+
+    <h3>4. Recursos externos</h3>
+    <p>Este sitio carga fuentes desde Google Fonts (fonts.googleapis.com). Google puede recopilar datos técnicos como tu dirección IP al servir las fuentes.</p>
+
+    <h3>5. Tus derechos (Ley 1581 de 2012)</h3>
+    <p>Como titular de los datos, tienes derecho a:</p>
+    <ul>
+      <li>Conocer, actualizar y rectificar tus datos personales</li>
+      <li>Solicitar prueba de la autorización otorgada</li>
+      <li>Revocar la autorización y/o solicitar la supresión de tus datos</li>
+      <li>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC)</li>
+    </ul>
+
+    <h3>6. Contacto para ejercer tus derechos</h3>
+    <p>Correo: <a href="mailto:liofilizacionesquindio@gmail.com">liofilizacionesquindio@gmail.com</a><br>
+    Teléfono: +57 323 365 8793<br>
+    Dirección: Calle 10 #23C-11 Barrio Granada, Armenia, Quindío</p>
+
+    <h3>7. Vigencia</h3>
+    <p>Esta política está vigente desde el 27 de marzo de 2026 y permanecerá en vigor mientras Liofilizaciones Quindío mantenga actividades de tratamiento de datos.</p>
+  </div>
+</div>
+
+<!-- ═══ TERMS & CONDITIONS MODAL ════════════════════ -->
+<div class="legal-overlay" id="termsOverlay" onclick="if(event.target===this)closeLegal('terms')">
+  <div class="legal-modal">
+    <button class="legal-close" onclick="closeLegal('terms')" aria-label="Cerrar">&times;</button>
+    <h2>Términos y Condiciones</h2>
+    <p><strong>Liofilizaciones Quindío (LioFruts)</strong><br>Última actualización: 27 de marzo de 2026</p>
+
+    <h3>1. Pedido mínimo</h3>
+    <p>El pedido mínimo es de 12 productos o $50.000 COP (lo que se cumpla primero). Pedidos menores a este monto no podrán ser procesados.</p>
+
+    <h3>2. Proceso de compra</h3>
+    <p>Los pedidos se realizan a través de WhatsApp. Al hacer clic en "Pedir por WhatsApp", se genera un mensaje con el detalle de tu pedido. Un asesor confirmará disponibilidad, precio final y método de pago.</p>
+
+    <h3>3. Precios</h3>
+    <p>Los precios mostrados están en pesos colombianos (COP) e incluyen IVA cuando aplique. Los precios pueden cambiar sin previo aviso. El precio final será el confirmado por nuestro asesor al momento de la compra.</p>
+
+    <h3>4. Envíos</h3>
+    <p>Los envíos se realizan dentro de Colombia. El costo y tiempo de envío se acuerdan directamente con el asesor vía WhatsApp según la ubicación de destino.</p>
+
+    <h3>5. Devoluciones y reembolsos</h3>
+    <p>Si recibes un producto en mal estado o diferente al solicitado, contáctanos dentro de las 48 horas siguientes a la entrega con fotos del producto. Evaluaremos cada caso y ofreceremos reemplazo o reembolso según corresponda.</p>
+
+    <h3>6. Descripción de productos</h3>
+    <p>Las imágenes son de referencia. Las frutas liofilizadas son productos naturales y pueden presentar variaciones de tamaño, forma o color. Los pesos indicados son aproximados.</p>
+
+    <h3>7. Contacto</h3>
+    <p>Para cualquier reclamación o consulta:<br>
+    Correo: <a href="mailto:liofilizacionesquindio@gmail.com">liofilizacionesquindio@gmail.com</a><br>
+    WhatsApp: +57 323 365 8793</p>
+  </div>
+</div>
+
+<!-- ═══ COOKIE / EXTERNAL RESOURCES NOTICE ══════════ -->
+<div class="cookie-notice" id="cookieNotice">
+  <span>Este sitio usa Google Fonts y Web3Forms para funcionar correctamente. Al continuar navegando, aceptas el uso de estos servicios externos. <a href="#" onclick="event.preventDefault();openLegal('privacy')">Más información</a></span>
+  <button onclick="acceptCookies()">Aceptar</button>
+</div>
 
 <!-- ═══ CART OVERLAY + DRAWER ════════════════════════ -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
@@ -1382,16 +1662,21 @@
   </div>
 </div>
 
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
 <!-- Float cart for mobile -->
-<button class="float-cart" id="floatCart" onclick="openCart()">
+<button class="float-cart" id="floatCart" onclick="openCart()" aria-label="Abrir carrito de compras">
   🛒 <span class="float-cart-badge" id="floatBadge">0</span>
 </button>
 
 <script>
   // ─── NAVBAR SCROLL ─────────────────────────────────
   const navbar = document.getElementById('navbar');
+  const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
+    backToTopBtn.classList.toggle('visible', window.scrollY > window.innerHeight);
   });
 
   // ─── HAMBURGER ─────────────────────────────────────
@@ -1423,10 +1708,28 @@
     }
   }
 
-  // ─── FLOATING FRUITS ────────────────────────────────
+  // ─── PROPERTY CARDS (keyboard accessible) ──────────
+  document.querySelectorAll('.prop-card').forEach(card => {
+    function toggleCard() {
+      const isOpen = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', isOpen);
+    }
+    card.addEventListener('click', toggleCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCard(); }
+    });
+  });
+
+  // ─── FLOATING FRUITS (capped at 6 concurrent) ──────
   (function() {
-    const fruits = ['🍓', '🍍', '🥭', '🍌', '🫐', '🍊', '🍋'];
+    const MAX_PARTICLES = 6;
+    const fruits = ['\uD83C\uDF53', '\uD83C\uDF4D', '\uD83E\uDD6D', '\uD83C\uDF4C', '\uD83E\uDED0', '\uD83C\uDF4A', '\uD83C\uDF4B'];
+    let activeCount = 0;
+    let fruitInterval = null;
+
     function spawnFruit() {
+      if (document.hidden || activeCount >= MAX_PARTICLES) return;
+      activeCount++;
       const el = document.createElement('span');
       el.className = 'fruit-particle';
       el.textContent = fruits[Math.floor(Math.random() * fruits.length)];
@@ -1436,12 +1739,23 @@
       el.style.fontSize = size + 'px';
       el.style.animationDuration = duration + 's';
       document.body.appendChild(el);
-      setTimeout(() => el.remove(), duration * 1000);
+      setTimeout(() => { el.remove(); activeCount--; }, duration * 1000);
     }
-    // stagger initial spawns so they don't all appear at once
-    for (let i = 0; i < 4; i++) setTimeout(spawnFruit, i * 2200);
-    // keep a gentle trickle going
-    setInterval(spawnFruit, 2800);
+
+    function startFruits() {
+      if (!fruitInterval) {
+        for (let i = 0; i < 3; i++) setTimeout(spawnFruit, i * 2200);
+        fruitInterval = setInterval(spawnFruit, 3500);
+      }
+    }
+    function stopFruits() {
+      if (fruitInterval) { clearInterval(fruitInterval); fruitInterval = null; }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? stopFruits() : startFruits();
+    });
+    startFruits();
   })();
 
   // ─── HERO SLIDESHOW ─────────────────────────────────
@@ -1458,11 +1772,29 @@
 
   // ─── FORM SUBMIT ───────────────────────────────────
   const contactForm = document.getElementById('contactForm');
+  let _formCooldown = false;
+  // Restore cooldown from localStorage if still active
+  try {
+    const cooldownUntil = Number(localStorage.getItem('liofruts_form_cooldown_until'));
+    if (cooldownUntil && Date.now() < cooldownUntil) {
+      _formCooldown = true;
+      const btn = document.getElementById('submitBtn');
+      let remaining = Math.ceil((cooldownUntil - Date.now()) / 1000);
+      btn.disabled = true;
+      btn.textContent = 'Espera ' + remaining + 's...';
+      const restoreTimer = setInterval(() => {
+        remaining--;
+        if (remaining <= 0) { clearInterval(restoreTimer); _formCooldown = false; btn.textContent = 'Enviar Mensaje'; btn.disabled = false; }
+        else { btn.textContent = 'Espera ' + remaining + 's...'; }
+      }, 1000);
+    }
+  } catch(e) {}
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const status = document.getElementById('formStatus');
+      if (_formCooldown) return;
       btn.disabled = true;
       btn.textContent = 'Enviando...';
       try {
@@ -1474,10 +1806,24 @@
         if (res.ok) {
           status.style.display = 'block';
           status.style.color = 'var(--green)';
-          status.textContent = '¡Mensaje enviado! Nos comunicaremos pronto.';
+          status.textContent = '\u00a1Mensaje enviado! Nos comunicaremos pronto.';
           contactForm.reset();
-          btn.textContent = 'Enviar Mensaje';
-          btn.disabled = false;
+          // 30-second cooldown (persisted across reloads)
+          _formCooldown = true;
+          try { localStorage.setItem('liofruts_form_cooldown_until', String(Date.now() + 30000)); } catch(e) {}
+          let remaining = 30;
+          btn.textContent = 'Espera ' + remaining + 's...';
+          const cooldownTimer = setInterval(() => {
+            remaining--;
+            if (remaining <= 0) {
+              clearInterval(cooldownTimer);
+              _formCooldown = false;
+              btn.textContent = 'Enviar Mensaje';
+              btn.disabled = false;
+            } else {
+              btn.textContent = 'Espera ' + remaining + 's...';
+            }
+          }, 1000);
         } else {
           throw new Error('Error al enviar');
         }
@@ -1493,22 +1839,36 @@
 
   // ─── CART STATE ────────────────────────────────────
   let cart = [];
+  // Load cart from localStorage
+  try {
+    const saved = localStorage.getItem('liofruts_cart');
+    if (saved) { cart = JSON.parse(saved); }
+    if (!Array.isArray(cart)) cart = [];
+  } catch(e) { cart = []; }
 
-  function addToCart(name, price, emoji) {
+  function saveCart() {
+    try { localStorage.setItem('liofruts_cart', JSON.stringify(cart)); } catch(e) {}
+  }
+
+  function addToCart(e, name, price, emoji) {
     const existing = cart.find(i => i.name === name);
     if (existing) { existing.qty++; }
     else { cart.push({ name, price, emoji, qty: 1 }); }
+    saveCart();
     updateCart();
     openCart();
     // Micro-animation feedback
-    const btn = event.currentTarget;
-    btn.textContent = '✓ Agregado';
-    btn.style.background = 'var(--orange)';
-    setTimeout(() => { btn.textContent = '+ Agregar al Carrito'; btn.style.background = ''; }, 1200);
+    if (e && e.currentTarget) {
+      const btn = e.currentTarget;
+      btn.textContent = '\u2713 Agregado';
+      btn.style.background = 'var(--orange)';
+      setTimeout(() => { btn.textContent = '+ Agregar al Carrito'; btn.style.background = ''; }, 1200);
+    }
   }
 
   function removeFromCart(name) {
     cart = cart.filter(i => i.name !== name);
+    saveCart();
     updateCart();
   }
 
@@ -1517,7 +1877,7 @@
     if (!item) return;
     item.qty += delta;
     if (item.qty <= 0) removeFromCart(name);
-    else updateCart();
+    else { saveCart(); updateCart(); }
   }
 
   function updateCart() {
@@ -1529,11 +1889,11 @@
     badge.textContent = count;
     badge.classList.toggle('show', count > 0);
 
-    // Float cart
+    // Float cart (use class so CSS media queries still control visibility)
     const floatCart = document.getElementById('floatCart');
     const floatBadge = document.getElementById('floatBadge');
     floatBadge.textContent = count;
-    floatCart.style.display = count > 0 ? 'flex' : 'none';
+    floatCart.classList.toggle('has-items', count > 0);
 
     // Cart items render
     const itemsEl = document.getElementById('cartItems');
@@ -1557,8 +1917,8 @@
       const meetsMin = count >= 12 || total >= 50000;
       btnOrder.disabled = !meetsMin;
       if (!meetsMin) {
-        const needQty = 12 - count;
-        const needCOP = 50000 - total;
+        const needQty = Math.max(0, 12 - count);
+        const needCOP = Math.max(0, 50000 - total);
         minMsg.style.display = '';
         minMsg.textContent = `Pedido mínimo: 12 productos (faltan ${needQty}) o $50.000 COP (faltan $${needCOP.toLocaleString('es-CO')})`;
       } else {
@@ -1571,19 +1931,49 @@
       cart.forEach(item => {
         const div = document.createElement('div');
         div.className = 'cart-item';
-        div.innerHTML = `
-          <span class="cart-item-emoji">${item.emoji}</span>
-          <div class="cart-item-info">
-            <strong>${item.name}</strong>
-            <span>$${item.price.toLocaleString('es-CO')} COP</span>
-          </div>
-          <div class="cart-item-qty">
-            <button class="qty-btn" onclick="changeQty('${item.name}', -1)">−</button>
-            <span class="qty-num">${item.qty}</span>
-            <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
-          </div>
-          <button class="remove-btn" onclick="removeFromCart('${item.name}')" aria-label="Eliminar">🗑</button>
-        `;
+
+        const emojiSpan = document.createElement('span');
+        emojiSpan.className = 'cart-item-emoji';
+        emojiSpan.textContent = item.emoji;
+
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'cart-item-info';
+        const nameEl = document.createElement('strong');
+        nameEl.textContent = item.name;
+        const priceEl = document.createElement('span');
+        priceEl.textContent = '$' + item.price.toLocaleString('es-CO') + ' COP';
+        infoDiv.appendChild(nameEl);
+        infoDiv.appendChild(priceEl);
+
+        const qtyDiv = document.createElement('div');
+        qtyDiv.className = 'cart-item-qty';
+        const minusBtn = document.createElement('button');
+        minusBtn.className = 'qty-btn';
+        minusBtn.textContent = '\u2212';
+        minusBtn.setAttribute('aria-label', 'Reducir cantidad');
+        minusBtn.addEventListener('click', () => changeQty(item.name, -1));
+        const qtyNum = document.createElement('span');
+        qtyNum.className = 'qty-num';
+        qtyNum.textContent = item.qty;
+        const plusBtn = document.createElement('button');
+        plusBtn.className = 'qty-btn';
+        plusBtn.textContent = '+';
+        plusBtn.setAttribute('aria-label', 'Aumentar cantidad');
+        plusBtn.addEventListener('click', () => changeQty(item.name, 1));
+        qtyDiv.appendChild(minusBtn);
+        qtyDiv.appendChild(qtyNum);
+        qtyDiv.appendChild(plusBtn);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = '\uD83D\uDDD1';
+        removeBtn.setAttribute('aria-label', 'Eliminar ' + item.name);
+        removeBtn.addEventListener('click', () => removeFromCart(item.name));
+
+        div.appendChild(emojiSpan);
+        div.appendChild(infoDiv);
+        div.appendChild(qtyDiv);
+        div.appendChild(removeBtn);
         itemsEl.appendChild(div);
       });
     }
@@ -1598,10 +1988,15 @@
   function closeCart() {
     document.getElementById('cartOverlay').classList.remove('open');
     document.getElementById('cartDrawer').classList.remove('open');
-    document.body.style.overflow = '';
+    if (!document.querySelector('.legal-overlay.open')) {
+      document.body.style.overflow = '';
+    }
   }
 
   document.getElementById('cartBtn').addEventListener('click', openCart);
+
+  // Restore cart UI from localStorage on load
+  if (cart.length > 0) updateCart();
 
   // ─── GOOGLE REVIEWS CAROUSEL ────────────────────────
   let _reviews = [];
@@ -1642,7 +2037,7 @@
       document.getElementById('reviewsMeta').style.display = 'block';
       document.getElementById('overallScore').textContent = rating.toFixed(1);
       document.getElementById('overallStars').textContent = '⭐'.repeat(Math.round(rating));
-      document.getElementById('overallCount').textContent = total ? `${total} reseñas en Google` : 'en Google';
+      document.getElementById('overallCount').textContent = total ? `${total} rese\u00f1as de clientes` : '';
     }
 
     _renderSlides();
@@ -1671,29 +2066,58 @@
     if (!_reviews.length) {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-      slide.innerHTML = '<div class="reviews-loading">No hay reseñas disponibles aún.</div>';
+      const msg = document.createElement('div');
+      msg.className = 'reviews-loading';
+      msg.textContent = 'No hay rese\u00f1as disponibles a\u00fan.';
+      slide.appendChild(msg);
       track.appendChild(slide);
     }
   }
 
   function _makeCard(r) {
     const initials = r.author_name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
-    const stars = '⭐'.repeat(Math.min(r.rating || 5, 5));
+    const stars = '\u2B50'.repeat(Math.min(r.rating || 5, 5));
     const div = document.createElement('div');
     div.className = 'review-card';
-    const avatarInner = r.profile_photo_url
-      ? `<img src="${r.profile_photo_url}" alt="${_esc(r.author_name)}">`
-      : initials;
-    div.innerHTML = `
-      <div class="quote-mark">"</div>
-      <p class="review-card-text">${_esc(r.text)}</p>
-      <div class="review-card-author">
-        <div class="review-card-avatar">${avatarInner}</div>
-        <div>
-          <div class="review-card-name">${_esc(r.author_name)}</div>
-          <div class="review-card-stars">${stars}</div>
-        </div>
-      </div>`;
+
+    const quote = document.createElement('div');
+    quote.className = 'quote-mark';
+    quote.textContent = '\u201C';
+
+    const text = document.createElement('p');
+    text.className = 'review-card-text';
+    text.textContent = r.text;
+
+    const authorDiv = document.createElement('div');
+    authorDiv.className = 'review-card-author';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'review-card-avatar';
+    if (r.profile_photo_url) {
+      const img = document.createElement('img');
+      img.src = r.profile_photo_url;
+      img.alt = r.author_name;
+      avatar.appendChild(img);
+    } else {
+      avatar.textContent = initials;
+    }
+
+    const metaDiv = document.createElement('div');
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'review-card-name';
+    nameDiv.textContent = r.author_name;
+    const starsDiv = document.createElement('div');
+    starsDiv.className = 'review-card-stars';
+    starsDiv.textContent = stars;
+    metaDiv.appendChild(nameDiv);
+    metaDiv.appendChild(starsDiv);
+
+    authorDiv.appendChild(avatar);
+    authorDiv.appendChild(metaDiv);
+
+    div.appendChild(quote);
+    div.appendChild(text);
+    div.appendChild(authorDiv);
     return div;
   }
 
@@ -1720,11 +2144,18 @@
     document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === _currentPage));
   }
 
-  function _startAuto() { _autoTimer = setInterval(() => _goTo(_currentPage + 1), 5000); }
+  function _startAuto() { _stopAuto(); _autoTimer = setInterval(() => _goTo(_currentPage + 1), 5000); }
   function _stopAuto() { clearInterval(_autoTimer); }
-  function _esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
-  window.addEventListener('resize', () => { _renderSlides(); _renderDots(); _goTo(0, false); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) _stopAuto(); else _startAuto();
+  });
+
+  let _resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(_resizeTimer);
+    _resizeTimer = setTimeout(() => { _renderSlides(); _renderDots(); _goTo(0, false); }, 150);
+  });
 
   // ─── WHATSAPP ORDER ────────────────────────────────
   function orderWhatsApp() {
@@ -1735,6 +2166,52 @@
     let lines = cart.map(i => `  • ${i.qty}x ${i.name} ($${i.price.toLocaleString('es-CO')} COP c/u)`).join('\n');
     const msg = `¡Hola LioFruts! 🍓 Me gustaría hacer el siguiente pedido:\n\n${lines}\n\n*Total: $${total.toLocaleString('es-CO')} COP*\n\n¡Gracias!`;
     window.open('https://wa.me/573233658793?text=' + encodeURIComponent(msg), '_blank');
+    cart = [];
+    saveCart();
+    updateCart();
+    closeCart();
+  }
+
+  // ─── LEGAL MODALS ──────────────────────────────────
+  function openLegal(type) {
+    const id = type === 'privacy' ? 'privacyOverlay' : 'termsOverlay';
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal(type) {
+    const id = type === 'privacy' ? 'privacyOverlay' : 'termsOverlay';
+    document.getElementById(id).classList.remove('open');
+    if (!document.querySelector('.legal-overlay.open') && !document.querySelector('.cart-overlay.open')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Escape key closes legal modals and cart
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const openLegalModal = document.querySelector('.legal-overlay.open');
+      if (openLegalModal) {
+        const type = openLegalModal.id === 'privacyOverlay' ? 'privacy' : 'terms';
+        closeLegal(type);
+      } else if (document.querySelector('.cart-overlay.open')) {
+        closeCart();
+      }
+    }
+  });
+
+  // ─── COOKIE NOTICE ─────────────────────────────────
+  (function() {
+    try {
+      if (!localStorage.getItem('liofruts_cookies_accepted')) {
+        setTimeout(() => document.getElementById('cookieNotice').classList.add('visible'), 1500);
+      }
+    } catch(e) {
+      setTimeout(() => document.getElementById('cookieNotice').classList.add('visible'), 1500);
+    }
+  })();
+  function acceptCookies() {
+    try { localStorage.setItem('liofruts_cookies_accepted', '1'); } catch(e) {}
+    document.getElementById('cookieNotice').classList.remove('visible');
   }
 </script>
 
